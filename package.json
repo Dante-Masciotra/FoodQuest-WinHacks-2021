@@ -1,0 +1,24 @@
+{
+  "name": "winhacks",
+  "version": "1.0.0",
+  "description": "WinHacks",
+  "main": "main.js",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "require": "^2.4.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JazzyD1302/WinHacks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JazzyD1302/WinHacks/issues"
+  },
+  "homepage": "https://github.com/JazzyD1302/WinHacks#readme"
+}
