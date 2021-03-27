@@ -14,7 +14,24 @@
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJbqKQlWXmbKyzHxKB8hZY5qTq4Z-8iDQ&libraries=places&callback=initMap"></script>
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJbqKQlWXmbKyzHxKB8hZY5qTq4Z-8iDQ&callback=initMap"></script>
 </head>
-<body>
+<body onload="getLocation()">
+
+    <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+        
+        function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude +
+          "<br>Longitude: " + position.coords.longitude;
+        }
+        </script>
+
     <div class="content">
         <div class="title" id="Title">
             <h1 class="title-text">FoodQuest</h1>
