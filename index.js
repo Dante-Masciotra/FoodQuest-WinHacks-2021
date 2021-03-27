@@ -9,56 +9,27 @@ function create_info(name, rating){
     restaurant.innerHTML= name+" "+rating;
 }
 
-// function getLocation() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(initialize);
-//     } else { 
-//         x.innerHTML = "Geolocation is not supported by this browser.";
-//     }
-// }
-
-// var map;
-// function initialize(){
-//     // var lat=position.coords.latitude;
-//     // var long=position.coords.longitude;
-//     var center = new google.maps.LatLng(42.270737,-83.0468638);
-  
-//     map = new google.maps.Map(document.getElementById('map'), {
-//         center: center,
-//         zoom: 15
-//       });
-  
-//     var request = {
-//       location: center,
-//       radius: '500',
-//       type: ['cafe']
-//     };
-  
-//     var service = new google.maps.places.PlacesService(map);
-//     service.nearbySearch(request, callback);
-
-//   }
-  
-//   function callback(results, status) {
-//     if (status == google.maps.places.PlacesServiceStatus.OK) {
-//       for (var i = 0; i < results.length; i++) {
-//         createMarker(results[i]);
-//       }
-//     }
-//   }
-//   function createMarker(place){
-//       var placeLoc = place.gemoetry.location;
-//       var marker = new google.maps.Marker({
-//           map: map,
-//           position: place.gemoetry.location
-//       });
-//   }
-//   window.addEventListener('load',getLocation);
-//   google.maps.event.addDomListener(window,'load',initialize);
-
 var map; 
 var infowindow;
 var test;
+
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "rest"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  //Select all customers and return the result object:
+  con.query("SELECT * FROM customers", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+  });
+});
 
 function initMap() {
     const myLatLng = { lat: 42.270737, lng: -83.0468638 };
@@ -104,3 +75,4 @@ function initMap() {
       console.log(place.name);
     });
   }
+
