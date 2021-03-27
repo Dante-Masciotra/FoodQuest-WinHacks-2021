@@ -23,6 +23,7 @@ body {
 }
 
 .title{
+    overflow: hidden;
     margin: auto;
     width: 20%;
     border: 3pt solid #000000;
@@ -43,6 +44,7 @@ body {
 }
 
 div.search input[type=text] {
+    display: inline-block;
     margin-left: 35%;
     margin-top: 2%;
     align-content: center;
@@ -51,17 +53,16 @@ div.search input[type=text] {
     padding: 10pt;
     font-size: 17pt;
     border: 1pt solid grey;
-    float: left;
     width: 30%;
     background: #f1f1f1;
   }
 
   div.search button {
+    display: inline-block;
     margin-left: 35%;
     margin-bottom: 2%;
     height: 50pt;
     border-radius: 25pt;
-    float: left;
     width: 30%;
     padding: 10pt;
     background: #7DC2AF;
@@ -97,8 +98,41 @@ div.search input[type=text] {
   }
 
   /* Use a media query to add a break point at 800px: */
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
     .title, .search {
       width:100%; /* The width is 100%, when the viewport is 800px or smaller */
     }
+
+    div.search input[type=text] {
+        display: inline-block;
+        margin-left: 25%;
+        margin-top: 2%;
+        align-content: center;
+        border-radius: 25pt;
+        height: 50pt;
+        padding: 10pt;
+        font-size: 17pt;
+        border: 1pt solid grey;
+        width: 50%;
+        background: #f1f1f1;
+      }
+
+      div.search button {
+        display: inline-block;
+        margin-left: 25%;
+        margin-bottom: 2%;
+        height: 50pt;
+        border-radius: 25pt;
+        width: 50%;
+        padding: 10pt;
+        background: #7DC2AF;
+        color: white;
+        font-size: 17pt;
+        border: 1pt solid grey;
+        cursor: pointer;
+      }
+
+      .footer{
+        visibility: hidden;
+      }
   }
