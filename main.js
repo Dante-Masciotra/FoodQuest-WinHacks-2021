@@ -13,25 +13,6 @@ var map;
 var infowindow;
 var test;
 
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "rest"
-});
-
-con.connect(function(err) {
-    console.log("hello");
-  if (err) throw err;
-  //Select all customers and return the result object:
-  con.query("SELECT * FROM options", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
-
 function initMap() {
     const myLatLng = { lat: 42.270737, lng: -83.0468638 };
     infowindow = new google.maps.InfoWindow();
@@ -69,11 +50,26 @@ function initMap() {
     });
 
     test=place;
-    create_info(place.name, place.rating);
-    google.maps.event.addListener(marker, "click", () => {
-      infowindow.setContent(place.name || "");
-      infowindow.open(map);
-      console.log(place.name);
-    });
+    if(send_data()){
+      create_info(place.name, place.rating);
+      google.maps.event.addListener(marker, "click", () => {
+        infowindow.setContent(place.name || "");
+        infowindow.open(map);
+        console.log(place.name);
+      });
+    }
+
+
   }
 
+
+function send_data(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      return this.responseText;
+    }
+  }
+  xhttp.open("GET", "search.php", true);
+  xhttp.send();
+}
