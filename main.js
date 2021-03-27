@@ -1,7 +1,5 @@
 
 function create_info(name, rating){
-    // var info = {Name:""};
-    // info.Name="World"
     var restaurant = document.createElement('div');
     restaurant.id = "r";
     restaurant.className -"r";
@@ -20,11 +18,6 @@ function initMap() {
       zoom: 15,
       center: myLatLng,
     });
-    // new google.maps.Marker({
-    //     position: myLatLng,
-    //     map,
-    //     title: "Hello World!",
-    //   });
     var request = {
         location: myLatLng,
         radius: '5000',
@@ -50,7 +43,7 @@ function initMap() {
     });
 
     test=place;
-    if(send_data()){
+    if(send_data(place.name)){
       create_info(place.name, place.rating);
       google.maps.event.addListener(marker, "click", () => {
         infowindow.setContent(place.name || "");
@@ -58,18 +51,32 @@ function initMap() {
         console.log(place.name);
       });
     }
-
-
   }
 
 
-function send_data(){
+function get_data(){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      return this.responseText;
+      // return this.responseText;
+      console.log(this.responseText);
     }
   }
   xhttp.open("GET", "search.php", true);
   xhttp.send();
+}
+
+function send_data(Name){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "search.php", true); 
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     // Response
+     var response = this.responseText;
+    }
+  };
+  var data = {name:Name};
+  xhttp.send(JSON.stringify(data));
+  return get_data();
 }
