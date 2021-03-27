@@ -5,14 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>info</title>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJbqKQlWXmbKyzHxKB8hZY5qTq4Z-8iDQ&libraries=places&callback=initMap"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJbqKQlWXmbKyzHxKB8hZY5qTq4Z-8iDQ&callback=initMap"></script>
+    <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJbqKQlWXmbKyzHxKB8hZY5qTq4Z-8iDQ&libraries=places&callback=initMap"></script> -->
+    
+    <script async type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJbqKQlWXmbKyzHxKB8hZY5qTq4Z-8iDQ&libraries=places&callback=initMap"></script>
+    <!-- <script src="/assets/gmap3.js?body=1" type="text/javascript"></script> -->
     <script src="index.js"></script>
+    <style>
+        html,body, #test{
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        #map{
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            /* visibility: hidden; */
+        }
+    </style>
 </head>
 <body>
-    <div id="restaurants" onclick="create_info()">
+    
+    <!-- <div id="restaurants" onclick="create_info()">
         Hello
-    </div>
+    </div> -->
+    <div id="map"></div>
+    <div id="test"></div>
     
 
 </body>
