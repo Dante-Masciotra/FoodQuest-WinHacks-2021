@@ -36,11 +36,14 @@ body {
 }
 
 .search{
-    margin: auto;
+    align-content: center;
     width: 60%;
     height: 50%;
     border: 3px solid #000000;
     padding: 10px;
+    display: inline;
+    justify-content: center;
+    align-items: center;
 }
 
 div.search input[type=text] {
@@ -52,16 +55,17 @@ div.search input[type=text] {
     font-size: 17px;
     border: 1px solid grey;
     float: left;
-    width: 80%;
+    width: 40%;
     background: #f1f1f1;
   }
-  
+
   div.search button {
+
     margin-left: 15px;
     height: 50px;
     border-radius: 25px;
     float: left;
-    width: 10%;
+    width: 40%;
     padding: 10px;
     background: #7DC2AF;
     color: white;
