@@ -59,6 +59,7 @@ function create_info(name, rating){
 var map; 
 var infowindow;
 var test;
+
 function initMap() {
     const myLatLng = { lat: 42.270737, lng: -83.0468638 };
     infowindow = new google.maps.InfoWindow();
@@ -79,23 +80,14 @@ function initMap() {
 
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, (results, status) => {
-        console.log(results.length);
+        console.log(results);
         if (status === google.maps.places.PlacesServiceStatus.OK && results) {
           for (let i = 0; i < results.length; i++) {
             createMarker(results[i]);
           }
-        //   map.setCenter(results[0].geometry.location);
         }
       });
   }
-
-//   function callback(results, status) {
-//     if (status == google.maps.places.PlacesServiceStatus.OK) {
-//       for (var i = 0; i < results.length; i++) {
-//         createMarker(results[i]);
-//       }
-//     }
-//   }
 
   function createMarker(place) {
     if (!place.geometry || !place.geometry.location) return;
@@ -103,7 +95,7 @@ function initMap() {
       map,
       position: place.geometry.location,
     });
-    // document.getElementById("test").innerHTML=place.name;
+
     test=place;
     create_info(place.name, place.rating);
     google.maps.event.addListener(marker, "click", () => {
@@ -112,4 +104,3 @@ function initMap() {
       console.log(place.name);
     });
   }
-
