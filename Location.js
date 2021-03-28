@@ -14,7 +14,7 @@ function getuserLoca(){
     radius=document.getElementById('dis').value;
     //convert to miles
     radius*=1000;
-    
+
     geocoder.geocode( { 'address': CurLocation}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
          lat = results[0].geometry.location.lat();
@@ -22,7 +22,7 @@ function getuserLoca(){
          myStorage.setItem("Lat",lat);
          myStorage.setItem("Lng",lng);
          myStorage.setItem("rad",radius);
-             window.location.href = "/info.html";
+             window.location.href = "info.html";
         } else {
         alert("Not A Valid Postal Code");
       }
