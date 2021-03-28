@@ -212,7 +212,7 @@ div.search input[type=text] {
 
 
   /* Use a media query to add a break point at 800px: */
-@media screen and (max-width: 1250pt) {
+@media screen and (max-width: 800pt) {
 
     .search {
       width:100%; /* The width is 100%, when the viewport is 800px or smaller */
@@ -281,7 +281,7 @@ div.search input[type=text] {
 
       #Rest{
         
-        display: inline-block;
+        display: inline;
         margin-top: 2%;
         align-content: center;
         border-radius: 25pt;
@@ -296,7 +296,7 @@ div.search input[type=text] {
     
     #rName{
         position: relative;
-        display: inline-block;
+        display: inline;
         align-content: center;
         border-radius: 25pt;
         height: 50pt;
@@ -308,8 +308,8 @@ div.search input[type=text] {
     }
     
     #rRating{
-    position: relative;
-        display: inline-block;
+        position: relative;
+        display: inline;
         align-content: center;
         border-radius: 25pt;
         height: 50pt;
@@ -322,7 +322,7 @@ div.search input[type=text] {
     
     #rPrice{
         position: relative;
-        display: inline-block;
+        display: inline;
         align-content: center;
         border-radius: 25pt;
         height: 50pt;
@@ -336,7 +336,7 @@ div.search input[type=text] {
     
     #rDist{
     position: relative; 
-    display: inline-block;
+    display: inline;
     align-content: center;
     border-radius: 25pt;
     height: 50pt;
@@ -348,7 +348,7 @@ div.search input[type=text] {
     }
     
     #rimg {
-        width: 40%;
+        width: 70%;
         height: 100%;
     }
     
