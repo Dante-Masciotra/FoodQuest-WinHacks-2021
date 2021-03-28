@@ -1,18 +1,61 @@
-function create_info(name, rating){
-    var restaurant = document.createElement('div');
-    restaurant.id = "r";
-    restaurant.className -"r";
-    document.getElementById("test").appendChild(restaurant);
-    restaurant.innerHTML= name+" "+rating;
-}
-
 var map; 
 var infowindow;
 var test;
 var strings;
 
+
+var myStorage = window.sessionStorage;
+
+var lat = myStorage.getItem("Lat");
+var lng = myStorage.getItem("Lng");
+var radius= myStorage.getItem("rad");
+
+function create_info(name, rating, hours,price,distance){
+
+    var Rest = document.createElement('div');
+    Rest.id = "Rest";
+    Rest.className ="r";
+
+    var rName = document.createElement('div');
+    rName.id = "rName";
+    rName.className ="r";
+
+    var rRating = document.createElement('div');
+    rRating.id = "rRating";
+    rRating.className ="r";
+
+    var rTime = document.createElement('div');
+    rTime.id = "rTime";
+    rTime.className ="r";
+
+    var rPrice = document.createElement('div');
+    rPrice.id = "rPrice";
+    rPrice.className ="r";
+
+    var rDist = document.createElement('div');
+    rDist.id = "rDist";
+    rDist.className ="r";
+
+    document.getElementById("test").appendChild(Rest);
+    document.getElementById("test").appendChild(document.createElement('br'));
+
+    Rest.appendChild(rName);
+    Rest.appendChild(rRating);
+    Rest.appendChild(rTime);
+    Rest.appendChild(rPrice);
+    Rest.appendChild(rDist);
+
+    rName.innerHTML= name;
+    rRating.innerHTML= rating;
+    rTime.innerHTML= hours;
+    rPrice.innerHTML= price;
+    rDist.innerHTML= distance;
+}
+
+
+
 function initMap() {
-    const myLatLng = { lat: 42.270737, lng: -83.0468638 };
+    const myLatLng = { lat: lat, lng: lng };
     infowindow = new google.maps.InfoWindow();
     map = new google.maps.Map(document.getElementById("map"), {
       zoom: 15,
@@ -20,7 +63,7 @@ function initMap() {
     });
     var request = {
         location: myLatLng,
-        radius: '5000',
+        radius: radius.toString(),
         type: ['restaurant']
     };
 
@@ -44,8 +87,13 @@ function initMap() {
 
     test=place;
     get_data(i);
-    console.log(strings);
-    if(strings.indexOf(place.name) !== -1){
+    console.log(place);
+    if(place.business_status == "OPERATIONAL"){
+      create_info(place.name, place.rating,place.opening_hours.isOpen(),place.price_level,0);
+    }else if(place.business_status != "OPERATIONAL"){
+      create_info(place.name, place.rating,"Unknown",place.price_level,0);
+    }
+    // if(strings.indexOf(place.name) !== -1){
     //   create_info(place.name, place.rating);
     //   google.maps.event.addListener(marker, "click", () => {
     //     infowindow.setContent(place.name || "");
@@ -53,8 +101,8 @@ function initMap() {
     //     console.log(place.name);
     //   });
     // // }else{
-      console.log("big pog")
-    }
+    //   console.log("big pog")
+    // }
   }
 
 

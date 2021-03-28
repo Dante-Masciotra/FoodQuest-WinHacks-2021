@@ -12,6 +12,9 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJbqKQlWXmbKyzHxKB8hZY5qTq4Z-8iDQ&sensor=false"></script> 
+    <!-- <script async type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJbqKQlWXmbKyzHxKB8hZY5qTq4Z-8iDQ"></script> -->
+    <script src="Location.js"></script>
 </head>
 <body>
     <div class="content">
@@ -25,7 +28,7 @@
             <br>
             <br>
             <br>
-            <input type="text" name="distance" id="dis" class="distance" placeholder="Distance in Kilometers: e.g 15"></input>
+            <input type="number" min=1 max=100 name="distance" id="dis" class="distance" placeholder="Distance in Kilometers: "></input>
             <br>
             <br>
             <br>
@@ -34,7 +37,7 @@
             <br>
             <br>
             <br>
-            <a href="info.html"><button class="fa fa-search"></button></a>
+            <button onclick="getuserLoca()" class="fa fa-search"></button>
         </div>
 
         <div class="footer">
@@ -42,6 +45,5 @@
             <h6 class="us">Info about us goes here how we started why were still doing it community helping ect ect</h6>
         </div>
     </div>
-    <script src="main.js"></script>
 </body>
 </html>
