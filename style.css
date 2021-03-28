@@ -131,7 +131,8 @@ div.search input[type=text] {
   }
 
 #Rest{
-
+    
+    margin:auto;
     display: inline-block;
     margin-top: 2%;
     align-content: center;
