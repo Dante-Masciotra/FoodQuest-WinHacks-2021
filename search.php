@@ -6,9 +6,9 @@
     while($row = mysqli_fetch_array($sql)) {
         $names[] = $row['name'];
     }
-
-    foreach($names as $name) {
-        echo json_encode($name);
-        }
+    echo json_encode($names);
+    // foreach($names as $name) {
+    //     echo " <script>alert('$name');</script> ";
+    //     }
 
 ?>

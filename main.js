@@ -3,7 +3,7 @@ var infowindow;
 var test;
 var strings;
 
-
+var lStorage =localStorage;
 var myStorage = window.sessionStorage;
 
 var lat = myStorage.getItem("Lat");
@@ -80,12 +80,14 @@ function initMap() {
     });
 
     test=place;
-    get_data(i);
+    call_Test();
     console.log(place);
-    if(place.business_status == "OPERATIONAL"){
-      create_info(place.name, place.rating,place.price_level,0);
-    }else if(place.business_status != "OPERATIONAL"){
-      create_info(place.name, place.rating,place.price_level,0);
+    if(lStorage.getItem(place.name)!=null){
+      if(place.business_status == "OPERATIONAL"){
+        create_info(place.name, place.rating,place.price_level,0);
+      }else if(place.business_status != "OPERATIONAL"){
+        create_info(place.name, place.rating,place.price_level,0);
+      }
     }
     // if(strings.indexOf(place.name) !== -1){
     //   create_info(place.name, place.rating);
@@ -104,13 +106,38 @@ function get_data(i){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      strings= this.responseText.split('""');
+      // strings= this.responseText.split('""');
       
-      // console.log(typeof this.responseText);
-      console.log(strings[0]);
+      console.log(this.responseText);
+      // console.log(strings[0]);
       // console.log(this.responseText);
     }
   }
   xhttp.open("GET", "search.php", true);
   xhttp.send();
+}
+
+function StoreData(name, value){
+  lStorage.setItem(name, value);
+}
+
+
+function call_Test(){
+  // $.get( "search.php", function( data ) {
+  //   alert( data[0] );
+  // });
+
+  $.ajax({
+    type: 'POST',
+    url: 'search.php',
+    data: 'id=testdata',
+    dataType: 'json',
+    cache: false,
+    success: function(result) {
+      for(var i=0; i<result.length;i++){
+
+        StoreData(result[i],result[i]);
+      }
+    },
+  });
 }
