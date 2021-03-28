@@ -1,4 +1,3 @@
-
 function create_info(name, rating){
     var restaurant = document.createElement('div');
     restaurant.id = "r";
@@ -10,6 +9,7 @@ function create_info(name, rating){
 var map; 
 var infowindow;
 var test;
+var strings;
 
 function initMap() {
     const myLatLng = { lat: 42.270737, lng: -83.0468638 };
@@ -29,13 +29,13 @@ function initMap() {
         console.log(results);
         if (status === google.maps.places.PlacesServiceStatus.OK && results) {
           for (let i = 0; i < results.length; i++) {
-            createMarker(results[i]);
+            createMarker(results[i],i);
           }
         }
       });
   }
 
-  function createMarker(place) {
+  function createMarker(place,i) {
     if (!place.geometry || !place.geometry.location) return;
     const marker = new google.maps.Marker({
       map,
@@ -43,40 +43,32 @@ function initMap() {
     });
 
     test=place;
-    if(send_data(place.name)){
-      create_info(place.name, place.rating);
-      google.maps.event.addListener(marker, "click", () => {
-        infowindow.setContent(place.name || "");
-        infowindow.open(map);
-        console.log(place.name);
-      });
+    get_data(i);
+    console.log(strings);
+    if(strings.indexOf(place.name) !== -1){
+    //   create_info(place.name, place.rating);
+    //   google.maps.event.addListener(marker, "click", () => {
+    //     infowindow.setContent(place.name || "");
+    //     infowindow.open(map);
+    //     console.log(place.name);
+    //   });
+    // // }else{
+      console.log("big pog")
     }
   }
 
 
-function get_data(){
+function get_data(i){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      // return this.responseText;
-      console.log(this.responseText);
+      strings= this.responseText.split('""');
+      
+      // console.log(typeof this.responseText);
+      console.log(strings[0]);
+      // console.log(this.responseText);
     }
   }
   xhttp.open("GET", "search.php", true);
   xhttp.send();
-}
-
-function send_data(Name){
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "search.php", true); 
-  xhttp.setRequestHeader("Content-Type", "application/json");
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-     // Response
-     var response = this.responseText;
-    }
-  };
-  var data = {name:Name};
-  xhttp.send(JSON.stringify(data));
-  return get_data();
 }

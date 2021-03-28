@@ -96,6 +96,10 @@ div.search input[type=text] {
   .us{
 
   }
+  
+  #hide{
+      visibility: hidden;
+  }
 
   /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 1200px) {
