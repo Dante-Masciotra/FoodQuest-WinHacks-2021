@@ -22,17 +22,12 @@ body {
     background-image: linear-gradient(to bottom right, #C38D9D, #E8A87C);
 }
 
-.title{
-    overflow: hidden;
-    margin: auto;
-    width: 20%;
-    border: 3pt solid #000000;
-    padding: 10pt;
-}
-
-.title-text{
-    padding: 20pt;
-    text-align: center;
+.logo{
+    width: 250pt;
+    height: 250pt;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search{
@@ -56,6 +51,20 @@ div.search input[type=text] {
     width: 30%;
     background: #f1f1f1;
   }
+
+.distance{
+    display: inline-block;
+    margin-left: 35%;
+    margin-top: 2%;
+    align-content: center;
+    border-radius: 25pt;
+    height: 50pt;
+    padding: 10pt;
+    font-size: 17pt;
+    border: 1pt solid grey;
+    width: 30%;
+    background: #f1f1f1;
+}
 
   div.search button {
     display: inline-block;
@@ -82,20 +91,6 @@ div.search input[type=text] {
     display: table;
   }
 
-  .footer{
-    margin: auto;
-    width: 20%;
-    border: 3pt solid #000000;
-    padding: 10pt;
-  }
-
-  .about{
-
-  }
-
-  .us{
-
-  }
   
   #hide{
       visibility: hidden;
@@ -103,9 +98,18 @@ div.search input[type=text] {
 
   /* Use a media query to add a break point at 800px: */
 @media screen and (max-width: 1250pt) {
-    .title, .search {
+    .search {
       width:100%; /* The width is 100%, when the viewport is 800px or smaller */
     }
+
+    .logo{
+    width:100pt;
+    height:100pt;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
 
     div.search input[type=text] {
         display: inline-block;
@@ -119,6 +123,19 @@ div.search input[type=text] {
         width: 50%;
         background: #f1f1f1;
       }
+
+      .distance{
+        display: inline-block;
+        margin-left: 25%;
+        align-content: center;
+        border-radius: 25pt;
+        height: 50pt;
+        padding: 10pt;
+        font-size: 17pt;
+        border: 1pt solid grey;
+        width: 50%;
+        background: #f1f1f1;
+    }
 
       div.search button {
         display: inline-block;
@@ -135,7 +152,4 @@ div.search input[type=text] {
         cursor: pointer;
       }
 
-      .footer{
-        visibility: hidden;
-      }
   }
