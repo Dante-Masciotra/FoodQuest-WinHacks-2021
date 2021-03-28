@@ -50,7 +50,7 @@ function create_info(name, rating,price,distance){
     Rest.appendChild(rDist);
 
     rName.innerHTML= name;
-    rRating.innerHTML= rating;
+    rRating.innerHTML= rating+"/5";
     rDist.innerHTML= distance;
 }
 
