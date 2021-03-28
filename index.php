@@ -28,7 +28,7 @@
             <br>
             <br>
             <br>
-            <input type="number" min=1 max=100 name="distance" id="dis" class="distance" placeholder="Distance in Kilometers: "></input>
+            <input type="number" min=1 max=1000 name="distance" id="dis" class="distance" placeholder="Distance in Kilometers: "></input>
             <br>
             <br>
             <br>

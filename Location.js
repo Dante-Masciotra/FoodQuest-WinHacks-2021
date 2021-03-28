@@ -11,18 +11,15 @@ var count=0;
 function getuserLoca(){
     count++;
     CurLocation=document.getElementById('loc').value;
-    radius=document.getElementById('loc').value;
+    radius=document.getElementById('dis').value;
     //convert to miles
-    radius/=1.609;
-    if(radius<1){
-      radius=1;
-    }
-
+    radius*=1000;
+    
     geocoder.geocode( { 'address': CurLocation}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
          lat = results[0].geometry.location.lat();
          lng = results[0].geometry.location.lng();
-         myStorage.setItem("Lan",lat);
+         myStorage.setItem("Lat",lat);
          myStorage.setItem("Lng",lng);
          myStorage.setItem("rad",radius);
              window.location.href = "/info.html";

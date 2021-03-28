@@ -10,7 +10,7 @@ var lat = myStorage.getItem("Lat");
 var lng = myStorage.getItem("Lng");
 var radius= myStorage.getItem("rad");
 
-function create_info(name, rating, hours,price,distance){
+function create_info(name, rating,price,distance){
 
     var Rest = document.createElement('div');
     Rest.id = "Rest";
@@ -23,10 +23,6 @@ function create_info(name, rating, hours,price,distance){
     var rRating = document.createElement('div');
     rRating.id = "rRating";
     rRating.className ="r";
-
-    var rTime = document.createElement('div');
-    rTime.id = "rTime";
-    rTime.className ="r";
 
     var rPrice = document.createElement('div');
     rPrice.id = "rPrice";
@@ -41,13 +37,11 @@ function create_info(name, rating, hours,price,distance){
 
     Rest.appendChild(rName);
     Rest.appendChild(rRating);
-    Rest.appendChild(rTime);
     Rest.appendChild(rPrice);
     Rest.appendChild(rDist);
 
     rName.innerHTML= name;
     rRating.innerHTML= rating;
-    rTime.innerHTML= hours;
     rPrice.innerHTML= price;
     rDist.innerHTML= distance;
 }
@@ -55,7 +49,7 @@ function create_info(name, rating, hours,price,distance){
 
 
 function initMap() {
-    const myLatLng = { lat: lat, lng: lng };
+    const myLatLng = { lat: parseFloat(lat), lng: parseFloat(lng) };
     infowindow = new google.maps.InfoWindow();
     map = new google.maps.Map(document.getElementById("map"), {
       zoom: 15,
@@ -63,7 +57,7 @@ function initMap() {
     });
     var request = {
         location: myLatLng,
-        radius: radius.toString(),
+        radius: radius,
         type: ['restaurant']
     };
 
@@ -89,9 +83,9 @@ function initMap() {
     get_data(i);
     console.log(place);
     if(place.business_status == "OPERATIONAL"){
-      create_info(place.name, place.rating,place.opening_hours.isOpen(),place.price_level,0);
+      create_info(place.name, place.rating,place.price_level,0);
     }else if(place.business_status != "OPERATIONAL"){
-      create_info(place.name, place.rating,"Unknown",place.price_level,0);
+      create_info(place.name, place.rating,place.price_level,0);
     }
     // if(strings.indexOf(place.name) !== -1){
     //   create_info(place.name, place.rating);
