@@ -22,7 +22,7 @@ function getuserLoca(){
          myStorage.setItem("Lat",lat);
          myStorage.setItem("Lng",lng);
          myStorage.setItem("rad",radius);
-             window.location.href = "WinHacks/info.html";
+             window.location.href = "info.html";
         } else {
         alert("Not A Valid Postal Code");
       }
